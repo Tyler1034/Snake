@@ -1,22 +1,19 @@
 import javax.swing.*;
 
+public class Game extends JFrame {
 
-public class Game extends JFrame{
-
-    Board board = new Board();
-
-    public Game(){
-
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setVisible(true);
-        setResizable(false);
-        add(board);
+    Game(){
 
 
+        this.add(new Board());
+        this.setTitle("Snake");
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setResizable(false);
+        this.pack();
+        this.setVisible(true);
+        this.setLocationRelativeTo(null);
     }
 
-    public static void main(String[] args) {
-        Game game = new Game();
 
-    }
+
 }
