@@ -57,6 +57,16 @@ public class Board extends JPanel implements ActionListener {
         }
         g.setColor(Color.RED);
         g.fillOval(appleX, appleY, UnitSize, UnitSize);
+
+        for(int i = 0; i < bodyParts; i++){
+            if(i == 0){
+                g.setColor(Color.GREEN);
+                g.fillRect(x[i], y[i], UnitSize, UnitSize);
+            }else{
+                g.setColor(Color.ORANGE);
+                g.fillRect(x[i], y[i], UnitSize, UnitSize);
+            }
+        }
     }
 
     public void newApple(){
@@ -65,7 +75,24 @@ appleY = random.nextInt((int)(ScreenHeight/UnitSize)) * UnitSize;
     }
 
    public void move(){
-
+for(int i = bodyParts; i >0; i --){
+    x[i] = x[i-1];
+    y[i] = y[i-1];
+}
+switch(direction){
+    case'U':
+    y[0] = y[0] - UnitSize;
+    break;
+    case'D':
+        y[0] = y[0] + UnitSize;
+        break;
+    case'L':
+        x[0] = x[0] - UnitSize;
+        break;
+    case'R':
+        x[0] = x[0] + UnitSize;
+        break;
+}
    }
 
    public void checkApple(){
