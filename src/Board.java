@@ -109,7 +109,12 @@ switch(direction){
 
 @Override
     public void actionPerformed(ActionEvent e){
-
+if(running){
+    move();
+    checkApple();
+    checkCollisions();
+}
+repaint();
 }
 
    public class MyKeyAdapter extends KeyAdapter{
