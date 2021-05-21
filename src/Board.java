@@ -99,10 +99,28 @@ switch(direction){
 
    }
 
-   public void checkCollisions(){
-
+   public void checkCollisions() {
+       for (int i = bodyParts; i > 0; i--) {
+           if ((x[0] == x[i] && y[0] == y[i])) {
+               running = false;
+           }
+       }
+       if (x[0] < 0) {
+           running = false;
+       }
+       if (x[0] > ScreenWidth) {
+           running = false;
+       }
+       if (y[0] < 0) {
+           running = false;
+       }
+       if (y[0] > ScreenHeight) {
+           running = false;
+       }
+       if (!running) {
+           timer.stop();
+       }
    }
-
    public void gameOver(Graphics g){
 
    }
@@ -120,7 +138,36 @@ repaint();
    public class MyKeyAdapter extends KeyAdapter{
         @Override
        public void keyPressed(KeyEvent e){
+switch (e.getKeyCode()){
+    case KeyEvent.VK_LEFT:
+        if(direction != 'R'){
+            direction = 'L';
 
+        }
+        break;
+
+    case KeyEvent.VK_RIGHT:
+        if(direction != 'L'){
+            direction = 'R';
+
+        }
+        break;
+
+    case KeyEvent.VK_UP:
+        if(direction != 'D'){
+            direction = 'U';
+
+        }
+        break;
+
+    case KeyEvent.VK_DOWN:
+        if(direction != 'U'){
+            direction = 'D';
+
+        }
+        break;
+
+}
         }
    }
 
